@@ -9,12 +9,12 @@
 
 **set environment variables for Windows** 
 
-set GITHUB_USER=<your_username>
+set GITHUB_USER=<your_username>  
 set GITHUB_PASS=<your_password>
 
 **set environment variables for Linux**
 
-export GITHUB_USER=<your_username>
+export GITHUB_USER=<your_username>  
 export GITHUB_PASS=<your_password>
 
 **Start the server**
@@ -37,7 +37,7 @@ java -jar user-service-0.0.1-SNAPSHOT.jar --server.port=8182
 
 #### API Documentation with Swagger
 
-http://localhost:8181/swagger-ui.html
+http://localhost:8181/swagger-ui.html  
 http://localhost:8182/swagger-ui.html
 
 ## Testing
