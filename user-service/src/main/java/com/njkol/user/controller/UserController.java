@@ -1,6 +1,8 @@
 package com.njkol.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +28,15 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @Api(value = "User Service")
+@RefreshScope
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
 	private final static Logger logger = Logger.getLogger(UserController.class);
+
+	@Value("${message}")
+	private String myMessage;
 
 	@Autowired
 	private UserService service;
@@ -54,6 +60,7 @@ public class UserController {
 	@ApiOperation(value = "Retrives a User by their first id")
 	public User getUserById(@PathVariable int id) throws Exception {
 		logger.info("Fetching user Id : " + id + " details");
+		logger.info("The message from the config server is : "+myMessage);
 		return service.getUser(id);
 	}
 
