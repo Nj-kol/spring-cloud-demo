@@ -5,30 +5,32 @@
 
 ## Running the application
 
-1. Start the config server
+**1. Start the config server**
 
-**set environment variables for Windows**
+**set environment variables for Windows** 
+
 set GITHUB_USER=<your_username>
 set GITHUB_PASS=<your_password>
 
 **set environment variables for Linux**
+
 export GITHUB_USER=<your_username>
 export GITHUB_PASS=<your_password>
 
 **Start the server**
 java -jar config-server-0.0.1-SNAPSHOT.jar
 
-2. Run Eureka 
+**2. Run Eureka Server**
 
 java -jar service-registry-0.0.1-SNAPSHOT.jar
 
 *Note : Eureka dashboard available at - http://localhost:8761*
 
-3. Run Zuul
+**3. Run Zuul Proxy Server**
 
 java -jar api-gateway-0.0.1-SNAPSHOT.jar --server.port=8081
 
-4. Run two instances of the service
+**4. Run two instances of the user service**
 
 java -jar user-service-0.0.1-SNAPSHOT.jar --server.port=8181
 java -jar user-service-0.0.1-SNAPSHOT.jar --server.port=8182
