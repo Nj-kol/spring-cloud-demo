@@ -17,7 +17,7 @@ set GITHUB_PASS=<your_password>
 export GITHUB_USER=<your_username>  
 export GITHUB_PASS=<your_password>
 
-**Start the server**
+**Start the server**  
 java -jar config-server-0.0.1-SNAPSHOT.jar
 
 **2. Run Eureka Server**
