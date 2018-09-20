@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.njkol.user.model.User;
 import com.njkol.user.service.UserService;
 
@@ -60,14 +61,23 @@ public class UserController {
 	@ApiOperation(value = "Retrives a User by their first id")
 	public User getUserById(@PathVariable int id) throws Exception {
 		logger.info("Fetching user Id : " + id + " details");
-		logger.info("The message from the config server is : "+myMessage);
+		logger.info("The message from the config server is : " + myMessage);
 		return service.getUser(id);
 	}
 
 	@ApiOperation(value = "Deletes a User by their id")
+	@HystrixCommand(fallbackMethod = "deleteUserByIDFallback")
 	@DeleteMapping("/delete/{id}")
-	public void deleteUserByID(@PathVariable int id) throws Exception {
+	public String deleteUserByID(@PathVariable int id) throws Exception {
 		logger.info("Deleting user Id: " + id);
 		service.deleteUser(id);
+		return "User deleted successfully!";
+	}
+
+	/**
+	 * Fallback method when database is offline
+	 */
+	public String deleteUserByIDFallback(int i) {
+		return "Database down, please try again after sometime";
 	}
 }
