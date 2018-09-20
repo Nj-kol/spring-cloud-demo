@@ -38,13 +38,18 @@ java -jar api-gateway-0.0.1-SNAPSHOT.jar --server.port=8081
 
 **5. Run two instances of the user service**
 
-java -jar user-service-0.0.1-SNAPSHOT.jar --server.port=8181
+java -jar user-service-0.0.1-SNAPSHOT.jar --server.port=8181  
 java -jar user-service-0.0.1-SNAPSHOT.jar --server.port=8182
 
 #### API Documentation with Swagger
 
 http://localhost:8181/swagger-ui.html  
 http://localhost:8182/swagger-ui.html
+
+## Hystrix Dashboard 
+
+http://localhost:8181/hystrix  
+http://localhost:8182/hystrix
 
 ## Testing
 
